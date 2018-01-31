@@ -11,19 +11,24 @@ angular.module('phoneList')
 
           this.phones = [
               {
-                  name: 'phone name 1',
-                  snippet: 'phone snippet 1'
+                  name: 'iPhone',
+                  snippet: 'iPhone snippet with age 1',
+                  age: 1
               },
               {
-                  name: 'phone name 2',
-                  snippet: 'phone snippet 2'
+                  name: 'Windows Phone',
+                  snippet: 'Windows snippet with age 2',
+                  age: 2
               },
               {
-                  name: 'phone name 3',
-                  snippet: 'phone snippet 3'
+                  name: 'Android',
+                  snippet: 'Android snippet with age 3',
+                  age: 3
               }
 
           ];
+
+          this.orderProp = 'age';
       }
 
     });

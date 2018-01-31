@@ -1,11 +1,37 @@
+<div>
 
-<p>Hello, {{$ctrl.name}}!</p>
+    <p>Hello, {{$ctrl.name}}!</p>
 
-<ul>
-    <li ng-repeat="phone in $ctrl.phones">
-        <span>{{phone.name}}</span>
-        <p>{{phone.snippet}}</p>
-        </li>
-    </ul>
+    <div>
+        Search: <input ng-model="$ctrl.query" />
+    </div>
 
-<p>Total number of phones: {{phones.length}}</p>
+    <div>
+        The query is:  {{$ctrl.query}}
+    </div>
+
+    <div>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+            <option value="name">Alphabetical</option>
+            <option value="age">Newest</option>
+        </select>
+    </div>
+
+    <div>
+        The sort order is:   {{$ctrl.orderProp}}
+    </div>
+
+    <div>
+    <div>   The results are:</div>
+    <ul>
+        <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query
+                                | orderBy:$ctrl.orderProp">
+            <span>{{phone.name}}</span>
+            <p>{{phone.snippet}}</p>
+            </li>
+        </ul>
+
+    <p>Total number of phones: {{$ctrl.phones.length}}</p>
+    </div>
+</div>
