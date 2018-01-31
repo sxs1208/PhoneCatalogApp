@@ -1,6 +1,6 @@
-fdescribe('phoneList', function() {
+describe('phoneList', function() {
 
-    beforeEach(module('phoneCatalogApp'));
+    beforeEach(module('phoneList'));
 
     describe('PhoneListController', function() {
 

@@ -1,20 +1,9 @@
 'use strict';
 
-angular.module('phoneCatalogApp')
+angular.module('phoneList')
     .component('phoneList', {
-      template:
 
-        '<p>Hello, {{$ctrl.name}}!</p>' +
-
-        '<ul>' +
-            '<li ng-repeat="phone in $ctrl.phones">' +
-                '<span>{{phone.name}}</span>' +
-                '<p>{{phone.snippet}}</p>' +
-            '</li>' +
-        '</ul>' +
-
-        '<p>Total number of phones: {{phones.length}}</p>',
-
+      templateUrl: 'phone-list/phone-list.template.html',
 
       controller: function PhoneListController() {
 
