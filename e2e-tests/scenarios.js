@@ -1,21 +1,16 @@
-'use strict';
+describe('Protractor Demo App', function() {
 
-describe('application e2e testing', function () {
-    describe('phoneList', function() {
-        beforeEach(function() {
-
-            browser.get('index.html');
-            /*
-            browser.get('index.html').then(function() {
-                browser.wait(function() {
-                    return browser.getCurrentUrl().then(function(url) {
-                        return /thetestroom/.test(url);
-                    });
-                }, 10000);
-            });
-            */
-        });
+    beforeEach(function() {
+       // browser.get('hhttp://localhost:8000');
     });
+
+
+    it('should have a title', function() {
+        browser.get('http://localhost:8000');
+
+        expect(browser.getTitle()).toEqual('My HTML File');
+    });
+
 
     it('when search criteria entered, list of phones is filtered', function() {
         var phoneList = element.all(by.repeater('phone in $ctrl.phones'));
@@ -23,12 +18,13 @@ describe('application e2e testing', function () {
 
         expect(phoneList.count()).toBe(3);
 
-        query.sendKeys('phone name 1');
+        query.sendKeys('iPhone');
         expect(phoneList.count()).toBe(1);
 
         query.clear();
-        query.sendKeys('phone name');
+        query.sendKeys('snippet with');
         expect(phoneList.count()).toBe(3);
+
     });
 
 });
