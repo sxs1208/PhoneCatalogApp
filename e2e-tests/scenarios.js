@@ -28,31 +28,71 @@ describe('Protractor Demo App', function() {
     });
 
 
-    it('should be possible to control phone order via the drop-down menu', function() {
+    it('display results should be iltered by search', function() {
+
+        browser.get('http://localhost:8000');
+
         var queryField = element(by.model('$ctrl.query'));
-        var orderSelect = element(by.model('$ctrl.orderProp'));
-        //var nameOption = orderSelect.element(by.css('option[value="name"]'));
-        var phoneNameColumn = element.all(by.repeater('phone in $ctrl.phones').column('phone.name'));
 
-        function getNames() {
-            return phoneNameColumn.map(function(elem) {
-                return elem.getText();
-            });
-        }
+        //element.all(by.css('ul li')).then(function(items) {
+        $$('ul li').then(function(phones) {
+            expect(phones.length).toBe(3);
+            var name1 = phones[0].element(by.css('span'));
+            var name2 = phones[1].element(by.css('span'));
+            var name3 = phones[2].element(by.css('span'));
+            expect(name1.getText()).toBe('iPhone');
+            expect(name2.getText()).toBe('Windows Phone');
+            expect(name3.getText()).toBe('Android');
+        });
 
-        queryField.sendKeys('phone');   // Let's narrow the dataset to make the assertions shorter
 
-        expect(getNames()).toEqual([
-            'iPhone',
-            'Windows Phone'
-        ]);
+        queryField.sendKeys('phone');
 
-        nameOption.click();
+        //element.all(by.css('ul li')).then(function(items) {
+        $$('ul li').then(function(phones) {
+            expect(phones.length).toBe(2);
+            var name1 = phones[0].element(by.css('span'));
+            var name2 = phones[1].element(by.css('span'));
 
-        expect(getNames()).toEqual([
-            'iPhone',
-            'Windows Phone'
-        ]);
+            expect(name1.getText()).toBe('iPhone');
+            expect(name2.getText()).toBe('Windows Phone');
+
+        });
+
     });
 
+
+
+    it('display results by sort order', function() {
+
+        browser.get('http://localhost:8000');
+
+        //element.all(by.css('ul li')).then(function(items) {
+        $$('ul li').then(function(phones) {
+            expect(phones.length).toBe(3);
+            var name1 = phones[0].element(by.css('span'));
+            var name2 = phones[1].element(by.css('span'));
+            var name3 = phones[2].element(by.css('span'));
+            expect(name1.getText()).toBe('iPhone');
+            expect(name2.getText()).toBe('Windows Phone');
+            expect(name3.getText()).toBe('Android');
+        });
+
+
+        element(by.cssContainingText('option', 'Alphabetical')).click();
+
+        //element.all(by.css('ul li')).then(function(items) {
+        $$('ul li').then(function(phones) {
+            expect(phones.length).toBe(3);
+            var name1 = phones[0].element(by.css('span'));
+            var name2 = phones[1].element(by.css('span'));
+            var name3 = phones[2].element(by.css('span'));
+
+            expect(name1.getText()).toBe('Android');
+            expect(name2.getText()).toBe('iPhone');
+            expect(name3.getText()).toBe('Windows Phone');
+
+        });
+
+    });
 });
