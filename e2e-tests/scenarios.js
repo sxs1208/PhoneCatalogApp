@@ -16,14 +16,14 @@ describe('Protractor Demo App', function() {
         var phoneList = element.all(by.repeater('phone in $ctrl.phones'));
         var query = element(by.model('$ctrl.query'));
 
-        expect(phoneList.count()).toBe(3);
+        expect(phoneList.count()).toBe(20);
 
-        query.sendKeys('iPhone');
-        expect(phoneList.count()).toBe(1);
+        query.sendKeys('Samsung');
+        expect(phoneList.count()).toBe(5);
 
         query.clear();
-        query.sendKeys('snippet with');
-        expect(phoneList.count()).toBe(3);
+        query.sendKeys('Dell');
+        expect(phoneList.count()).toBe(2);
 
     });
 
@@ -36,26 +36,26 @@ describe('Protractor Demo App', function() {
 
         //element.all(by.css('ul li')).then(function(items) {
         $$('ul li').then(function(phones) {
-            expect(phones.length).toBe(3);
+            expect(phones.length).toBe(20);
             var name1 = phones[0].element(by.css('span'));
             var name2 = phones[1].element(by.css('span'));
             var name3 = phones[2].element(by.css('span'));
-            expect(name1.getText()).toBe('iPhone');
-            expect(name2.getText()).toBe('Windows Phone');
-            expect(name3.getText()).toBe('Android');
+            expect(name1.getText()).toBe('Motorola XOOM™ with Wi-Fi');
+            expect(name2.getText()).toBe('MOTOROLA XOOM™');
+            expect(name3.getText()).toBe('MOTOROLA ATRIX™ 4G');
         });
 
 
-        queryField.sendKeys('phone');
+        queryField.sendKeys('Samsung');
 
         //element.all(by.css('ul li')).then(function(items) {
         $$('ul li').then(function(phones) {
-            expect(phones.length).toBe(2);
+            expect(phones.length).toBe(5);
             var name1 = phones[0].element(by.css('span'));
             var name2 = phones[1].element(by.css('span'));
 
-            expect(name1.getText()).toBe('iPhone');
-            expect(name2.getText()).toBe('Windows Phone');
+            expect(name1.getText()).toBe('Samsung Gem™');
+            expect(name2.getText()).toBe('Samsung Galaxy Tab™');
 
         });
 
@@ -69,13 +69,13 @@ describe('Protractor Demo App', function() {
 
         //element.all(by.css('ul li')).then(function(items) {
         $$('ul li').then(function(phones) {
-            expect(phones.length).toBe(3);
+            expect(phones.length).toBe(20);
             var name1 = phones[0].element(by.css('span'));
             var name2 = phones[1].element(by.css('span'));
             var name3 = phones[2].element(by.css('span'));
-            expect(name1.getText()).toBe('iPhone');
-            expect(name2.getText()).toBe('Windows Phone');
-            expect(name3.getText()).toBe('Android');
+            expect(name1.getText()).toBe('Motorola XOOM™ with Wi-Fi');
+            expect(name2.getText()).toBe('MOTOROLA XOOM™');
+            expect(name3.getText()).toBe('MOTOROLA ATRIX™ 4G');
         });
 
 
@@ -83,14 +83,14 @@ describe('Protractor Demo App', function() {
 
         //element.all(by.css('ul li')).then(function(items) {
         $$('ul li').then(function(phones) {
-            expect(phones.length).toBe(3);
+            expect(phones.length).toBe(20);
             var name1 = phones[0].element(by.css('span'));
             var name2 = phones[1].element(by.css('span'));
             var name3 = phones[2].element(by.css('span'));
 
-            expect(name1.getText()).toBe('Android');
-            expect(name2.getText()).toBe('iPhone');
-            expect(name3.getText()).toBe('Windows Phone');
+            expect(name1.getText()).toBe('Dell Streak 7');
+            expect(name2.getText()).toBe('Dell Venue');
+            expect(name3.getText()).toBe('DROID™ 2 Global by Motorola');
 
         });
 
