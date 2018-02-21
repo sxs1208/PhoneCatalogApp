@@ -1,7 +1,7 @@
 
 
 app:   http://localhost:8000
-
+   :   http://localhost:8000/index.html#/!/phones
 
 npm install -g protractor
 webdriver-manager update

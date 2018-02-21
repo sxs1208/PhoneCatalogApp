@@ -1,5 +1,7 @@
 'use strict';
 
 angular.module('phoneCatalogApp', [
-    'phoneList'
+    'ngRoute',
+    'phoneList',
+    'phoneDetail'
 ]);
